@@ -1,0 +1,23 @@
+version: '3'
+services:
+  back-end:
+    build: ./backend/serviceconnect/
+    container_name: serviceconnect-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING.PROFILES.ACTIVE=default
+    
+  front-end:
+    build: ./frontend/service-connect/
+    container_name: serviceconnect-frontend
+    ports:
+      - "3000:3000"
+    links:
+      - "back-end"
+
+  db:
+    image: mongo:latest
+    container_name: serviceconnect-db
+    ports:
+      - "27017:27017"
