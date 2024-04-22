@@ -1,12 +1,12 @@
 #!groovy
 pipeline {
-    agent none
+    agent any
     
     stages {
         stage('Docker compose') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    sh 'docker compose up'
                 }
             }
         }
